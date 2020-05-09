@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Roots comparison";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Compare square roots of numbers</h1>
+    <p>Fill in the numbers to compare their roots</p>
+</div>
+
+@{    
+    if(ViewBag.Result == 0)
+    {
+        <div>
+            <p>Fill in the numbers to compare their roots</p>
+        </div>
+    }
+    else if(ViewBag.Result == 1)
+    {
+        <div>
+            <p>The number @ViewBag.num1 with square root @ViewBag.Root1 has a higher square root than the number @ViewBag.num2 with square root @ViewBag.Root2</p>
+        </div>
+    }
+    else if(ViewBag.Result == 2)
+    {
+        <div>
+            <p>The number @ViewBag.num1 with square root @ViewBag.Root1 has a lower square root than the number @ViewBag.num2 with square root @ViewBag.Root2</p>
+        </div>
+    }
+    else if(ViewBag.Result == 3)
+    {
+        <div>
+            <p>Both numbers have the same square root. Please enter a new set of numbers</p>
+        </div>
+    }
+    else if(ViewBag.Result == 4)
+    {
+        <div>
+            <p>Error! The number @ViewBag.num1 has a negative value. Please enter a positive number</p>
+        </div>
+    }
+    else if(ViewBag.Result == 5)
+    {
+        <div>
+            <p>Error! The number @ViewBag.num2 has a negative value. Please enter a positive number</p>
+        </div>
+    }
+}
+
+<div>
+    <form asp-controller="Roots" asp-action="compare" method="POST">
+    <input type="number" placeholder ="first number" name="firstnumber"/>
+    <input type="number" placeholder ="second number" name="secondnumber"/>
+    <button type="submit">submit</button>
+    </form>
+</div>
